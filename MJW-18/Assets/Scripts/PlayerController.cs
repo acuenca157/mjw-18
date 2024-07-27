@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 // Ensure the component is present on the gameobject the script is attached to
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private new Rigidbody2D rigidbody2D; // Local rigidbody variable to hold a reference to the attached Rigidbody2D component
     private Vector2 inputVector = new Vector2(0.0f, 0.0f);
     public float rotationSpeed = 5.0f;
+    public Transform draw;
 
     void Awake()
     {
@@ -24,6 +26,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        UpdateRotation(inputVector.x);
+    }
+
+    void UpdateRotation(float x) {
+        if (0 < x)
+        {
+            Debug.Log("GIRO DER");
+            draw.DOLocalRotate(new Vector3(0, 0, 0), 0.35f);
+        }
+        if (0 > x) {
+            Debug.Log("GIRO IZQ");
+            draw.DOLocalRotate(new Vector3(0, -180, 0), 0.35f);
+        }
 
     }
 
