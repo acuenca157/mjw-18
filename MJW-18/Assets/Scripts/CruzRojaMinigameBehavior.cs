@@ -23,11 +23,20 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
     private Vector3 sinoidalMovement;
     [SerializeField] [Range(0f, 10f)] private float winRange;
 
+    private Vector3 initialCameraPosition = new Vector3(0.0f,0.0f,0.0f);
+    private float timeOutsideRange = 0.0f;
+    public float timeLimitOutside = 0.8f;
+    private int timesOutsideRange = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         minigamesController = FindObjectOfType<MinigamesController>();
         sinoidalMovement = new Vector3();
+
+        initialCameraPosition = CameraTransform.position;
+        timeOutsideRange = 0.0f;
+        timesOutsideRange = 0;
 
         //Spawn position for the scrollbar
         //balanceo can be random, input msut be inside balanceo but also a little randomized
@@ -49,6 +58,13 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
         ScrollbarInputJugador.value = startingScrollbarPosition - (ScrollbarBalanceo.size/2.0f) + UnityEngine.Random.Range(0.0f, ScrollbarBalanceo.size);
 
     }
+
+    private void Reset()
+    {
+        CameraTransform.position = initialCameraPosition;
+        Start();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -106,20 +122,19 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
         }
     }
 
-    float timeOutsideRange = 0.0f;
-    float timeLimitOutside = 0.8f;
-    int timesOutsideRange = 0;
+
     void FailureLogic()
     {
         if(timeOutsideRange > timeLimitOutside)
         {
+            Reset();
             minigamesController.deactivateMinigame(false);
         }
 
-        Debug.Log(Vector3.Distance(CameraTransform.position, PuertaTransform.position));
 
         if(winRange > Vector3.Distance(CameraTransform.position, PuertaTransform.position))
         {
+            Reset();
             minigamesController.deactivateMinigame(true);
         }
 
