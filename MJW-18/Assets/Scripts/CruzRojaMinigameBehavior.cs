@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class CruzRojaMinigameBehavior : MonoBehaviour
 {
-
+    public MinigamesController minigamesController;
     public Transform OllaTransform;
     public Transform CameraTransform;
     public Scrollbar ScrollbarBalanceo;
@@ -24,6 +24,7 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        minigamesController = FindObjectOfType<MinigamesController>();
         sinoidalMovement = new Vector3();
 
         //Spawn position for the scrollbar
@@ -110,14 +111,12 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
     {
         if(timeOutsideRange > timeLimitOutside)
         {
-            //EVENT FAILURE
-            //Debug.Log("EVENT FAILED");
+            minigamesController.deactivateMinigame(false);
         }
 
         if(CameraTransform.position.z > 85.0f)
         {
-            //EVENT WON
-            //Debug.Log("EVENT WON");
+            minigamesController.deactivateMinigame(true);
         }
 
         float deltaSize = ScrollbarBalanceo.size / 2.0f; 

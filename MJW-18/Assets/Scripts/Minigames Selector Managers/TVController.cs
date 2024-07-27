@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TVController : MonoBehaviour
 {
-    [SerializeField] private RenderTexture[] renderTextures;
+    [SerializeField] private RawImage panel;
     [SerializeField] private RectTransform TVPanel;
     [SerializeField] private float hidenPosition, shownPosition;
     [SerializeField][Range(0, 30)] private float speed;
@@ -25,12 +26,16 @@ public class TVController : MonoBehaviour
         TVPanel.localPosition = new Vector3(0, Mathf.Lerp(TVPanel.localPosition.y, actualPosition, Time.deltaTime * speed), 0);
     }
 
-    public void toggleTV() {
+    public void toggleTV(RenderTexture render = null) {
         if (isShown)
         {
             actualPosition = hidenPosition;
         } else {
             actualPosition = shownPosition;
+        }
+
+        if (render != null) {
+            panel.texture = render;
         }
 
         isShown = !isShown;
