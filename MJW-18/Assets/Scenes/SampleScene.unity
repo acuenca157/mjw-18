@@ -447,8 +447,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: -1200}
-  m_SizeDelta: {x: 1007.017, y: 1007.017}
+  m_AnchoredPosition: {x: 5.881465, y: -1093.9543}
+  m_SizeDelta: {x: 1087.5, y: 795.456}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288383571
 MonoBehaviour:
@@ -761,7 +761,7 @@ MonoBehaviour:
   panel: {fileID: 288383571}
   TVPanel: {fileID: 288383570}
   hidenPosition: -1200
-  shownPosition: -180
+  shownPosition: 0
   speed: 15
 --- !u!1 &519420028
 GameObject:
@@ -1026,6 +1026,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelTitle: CACA2
   actionRadius: 5
+--- !u!4 &537554811 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 173463677993628488, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
+  m_PrefabInstance: {fileID: 680791737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &652671598
 GameObject:
   m_ObjectHideFlags: 3
@@ -1187,9 +1192,29 @@ PrefabInstance:
       value: 1771265381
       objectReference: {fileID: 0}
     - target: {fileID: 6085053954949300363, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6085053954949300363, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 55db0fab5e07f8f4995a072fd503b2a0, type: 2}
+    - target: {fileID: 6085053954949300363, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6085053954949300363, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.9139452
+      objectReference: {fileID: 0}
+    - target: {fileID: 6085053954949300363, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6085053954949300363, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6760378708545954257, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.2
@@ -1198,6 +1223,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7274792274081713587, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
+      propertyPath: winRange
+      value: 3.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274792274081713587, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
+      propertyPath: PuertaTransform
+      value: 
+      objectReference: {fileID: 537554811}
     - target: {fileID: 7274792274081713587, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
       propertyPath: ScrollbarBalanceo
       value: 
@@ -1214,7 +1247,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8029641362858495632, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
+    - {fileID: 5997891002183424610, guid: 2933bc3710cc73949a0157b445faf126, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

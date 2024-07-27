@@ -37,10 +37,10 @@ public class MinigamesController : MonoBehaviour
         resetMinigames();
         if (hasWin)
         {
-            Debug.Log("PERDISTE");
+            Debug.Log("GANASTE");
         }
         else {
-            Debug.Log("GANASTE!");
+            Debug.Log("PERDISTE");
         }
     }
 

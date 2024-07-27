@@ -107,7 +107,7 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
     }
 
     float timeOutsideRange = 0.0f;
-    float timeLimitOutside = 0.4f;
+    float timeLimitOutside = 0.8f;
     int timesOutsideRange = 0;
     void FailureLogic()
     {
@@ -115,6 +115,8 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
         {
             minigamesController.deactivateMinigame(false);
         }
+
+        Debug.Log(Vector3.Distance(CameraTransform.position, PuertaTransform.position));
 
         if(winRange > Vector3.Distance(CameraTransform.position, PuertaTransform.position))
         {
