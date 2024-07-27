@@ -112,11 +112,11 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
     float playerSpeed = 0.002f;
     void PlayerInput()
     {
-        if(Input.GetKey(KeyCode.RightArrow))
+        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.Mouse1))
         {
             ScrollbarInputJugador.value += playerSpeed;    
         }
-        else if(Input.GetKey(KeyCode.LeftArrow))
+        else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Mouse0))
         {
             ScrollbarInputJugador.value -= playerSpeed;    
         }
