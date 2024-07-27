@@ -6,9 +6,14 @@ using UnityEngine;
 public class GimnasioMamadoManager : MonoBehaviour
 {
     public MinigamesController minigamesController;
+    public Transform mainCamera;
     public TextMeshProUGUI burpeeInstructions;
     public Sprite[] sprites;
+    public Vector3[] cameraPositions;
+    public Vector3[] cameraRotation;
     public SpriteRenderer lladosRenderer;
+    public float rotatingSpeed = 1.0f;
+
 
     private int burpeeStage = 0;
     private int currentInputs = 0;
@@ -17,6 +22,8 @@ public class GimnasioMamadoManager : MonoBehaviour
     public float[] TimeLimitByDifficulty;
     public int[] InputsForWinByDifficulty;
     public int DifficultyLevel = 0;
+    private Vector3 previousRotationTarget;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +33,11 @@ public class GimnasioMamadoManager : MonoBehaviour
         lladosRenderer.sprite = sprites[burpeeStage];
         currentInputs = 0;
         elapsedTime = 0.0f;
-        burpeeInstructions.text = "Alternate A and D !!!";
+        burpeeInstructions.text = "Alterna A y D !!!";
+        previousRotationTarget = mainCamera.rotation.eulerAngles;
+
+        mainCamera.position = cameraPositions[0];
+        mainCamera.rotation = Quaternion.Euler(cameraRotation[0]);
     }
 
     void Reset()
@@ -43,6 +54,9 @@ public class GimnasioMamadoManager : MonoBehaviour
 
     private bool AlternateInput = false;
     private bool AlternateInputDouble = false;
+
+    private Vector3 cameraPositionTarget;
+    private Vector3 cameraRotationTarget;
     void PlayerInput()
     {
         if(burpeeStage == 0)
@@ -87,23 +101,37 @@ public class GimnasioMamadoManager : MonoBehaviour
                 AlternateInputDouble = !AlternateInputDouble;
             }
         }
+
+        UpdateGraphics();
+    }
+
+    float timeCountTransition = 0.0f;
+    void UpdateGraphics(){
+
+        int inputsToChangeSprite = 4;
+        int modulatedCurrentInputs = currentInputs / inputsToChangeSprite;
+        lladosRenderer.sprite = sprites[modulatedCurrentInputs % 3];
+        cameraPositionTarget = cameraPositions[modulatedCurrentInputs % 3];
+        cameraRotationTarget = cameraRotation[modulatedCurrentInputs % 3];
+
+        //previousRotationTarget = cameraRotation[Mathf.Clamp((currentInputs/3 % 3) - 1, 0, 3)];
+
+        timeCountTransition += Time.deltaTime;
+        mainCamera.localPosition = Vector3.Lerp(mainCamera.localPosition, cameraPositionTarget, Time.deltaTime * 5.0f);
+        mainCamera.rotation = Quaternion.RotateTowards(mainCamera.rotation, Quaternion.Euler(cameraRotationTarget), Time.deltaTime * rotatingSpeed);//Quaternion.Slerp(mainCamera.rotation, Quaternion.Euler(cameraRotationTarget), Time.deltaTime * 5.0f);
     }
 
     void FailureLogic()
     {
-
-        lladosRenderer.sprite = sprites[currentInputs/3 % 3];
-
         if(burpeeStage == 0 && currentInputs > InputsForWinByDifficulty[DifficultyLevel] / 3)
         {
             burpeeStage = 1;
-            Debug.Log("Stage 2!!!");
-            burpeeInstructions.text = "Hit that Spacebar !!!";
+            burpeeInstructions.text = "Hittea la barrita !!!";
         }
         if(burpeeStage == 1 && currentInputs > (InputsForWinByDifficulty[DifficultyLevel] / 3) * 2)
         {
             burpeeStage = 2;
-            burpeeInstructions.text = "WASD . . . Spin to Win !!!";
+            burpeeInstructions.text = "WASD . . . Gira que te gira !!!";
         }
         
         if(currentInputs >= InputsForWinByDifficulty[DifficultyLevel])
