@@ -10,6 +10,7 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
     public MinigamesController minigamesController;
     public Transform OllaTransform;
     public Transform CameraTransform;
+    public Transform PuertaTransform;
     public Scrollbar ScrollbarBalanceo;
     public Scrollbar ScrollbarInputJugador;
     public float LoopTime;
@@ -20,6 +21,7 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
     public float[] ScrollbarMaxSpeedByDifficulty;
     public int DifficultyLevel = 0;
     private Vector3 sinoidalMovement;
+    [SerializeField] [Range(0f, 10f)] private float winRange;
 
     // Start is called before the first frame update
     void Start()
@@ -114,7 +116,7 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
             minigamesController.deactivateMinigame(false);
         }
 
-        if(CameraTransform.position.z > 85.0f)
+        if(winRange > Vector3.Distance(CameraTransform.position, PuertaTransform.position))
         {
             minigamesController.deactivateMinigame(true);
         }
@@ -132,5 +134,10 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
             timeOutsideRange = 0.0f;
             //Debug.Log("Inside Range . . .");
         }
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(PuertaTransform.position, winRange);
     }
 }
