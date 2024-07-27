@@ -4433,7 +4433,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 6085053954268515890}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 10
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -4442,8 +4442,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 1771265381
-  m_SortingOrder: 10
+  m_SortingLayerID: 0
+  m_SortingOrder: 326
   m_TargetDisplay: 0
 --- !u!23 &4072645724782574901
 MeshRenderer:
@@ -4711,10 +4711,10 @@ RectTransform:
   - {fileID: 4276262859078732033}
   m_Father: {fileID: 8996086895206212305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 2.2999954, y: 1.0999956}
-  m_SizeDelta: {x: -52.1, y: 21.155}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0000026429, y: -16.46}
+  m_SizeDelta: {x: 171.62, y: 18.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5326188033840992715
 MeshRenderer:
@@ -4789,10 +4789,10 @@ RectTransform:
   - {fileID: 691134287285955433}
   m_Father: {fileID: 8996086895206212305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 2.300003, y: 1.1}
-  m_SizeDelta: {x: -52.1, y: 21.155}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -16.46}
+  m_SizeDelta: {x: 171.63, y: 18.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &5707376632682857089
 MeshFilter:

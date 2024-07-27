@@ -38,9 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Minigame Cruz Roja
     uniqueID: 1771265381
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
