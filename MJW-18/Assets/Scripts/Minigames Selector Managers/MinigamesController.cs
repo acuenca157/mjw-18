@@ -8,6 +8,7 @@ public class MinigamesController : MonoBehaviour
     CurtainsController curtainsController;
     TVController tvController;
     [SerializeField] private MinigameInfo[] minigames;
+    private RoundTimeManager roundTimeManager;
 
     public bool IsOnMinigame = false;
 
@@ -16,15 +17,8 @@ public class MinigamesController : MonoBehaviour
     {
         curtainsController = FindObjectOfType<CurtainsController>();
         tvController = FindObjectOfType<TVController>();
+        roundTimeManager = FindObjectOfType<RoundTimeManager>();
         IsOnMinigame = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            activateMinigame(0);
-        }
     }
 
     public void activateMinigame(int id) {
@@ -41,10 +35,11 @@ public class MinigamesController : MonoBehaviour
         resetMinigames();
         if (hasWin)
         {
-            Debug.Log("GANASTE");
+            roundTimeManager.addTime(300);
+            roundTimeManager.addHP(100);
         }
         else {
-            Debug.Log("PERDISTE");
+            roundTimeManager.addTime(-100);
         }
 
         IsOnMinigame = false;
