@@ -8,12 +8,15 @@ public class MinigamesController : MonoBehaviour
     CurtainsController curtainsController;
     TVController tvController;
     [SerializeField] private MinigameInfo[] minigames;
-    
+
+    public bool IsOnMinigame = false;
+
     // Start is called before the first frame update
     void Start()
     {
         curtainsController = FindObjectOfType<CurtainsController>();
         tvController = FindObjectOfType<TVController>();
+        IsOnMinigame = false;
     }
 
     // Update is called once per frame
@@ -29,6 +32,7 @@ public class MinigamesController : MonoBehaviour
         Debug.Log(minigames[id].texture);
         makeTransition(minigames[id].texture);
         minigames[id].minigameObject.SetActive(true);
+        IsOnMinigame = true;
     }
 
     public void deactivateMinigame(bool hasWin)
@@ -42,6 +46,8 @@ public class MinigamesController : MonoBehaviour
         else {
             Debug.Log("PERDISTE");
         }
+
+        IsOnMinigame = false;
     }
 
     private void resetMinigames() {

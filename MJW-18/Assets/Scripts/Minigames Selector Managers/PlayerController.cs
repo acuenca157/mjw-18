@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public MinigamesController minigamesController;
     public Vector2 MovementSpeed = new Vector2(100.0f, 100.0f); // 2D Movement speed to have independant axis speed
     private new Rigidbody2D rigidbody2D; // Local rigidbody variable to hold a reference to the attached Rigidbody2D component
     private Vector2 inputVector = new Vector2(0.0f, 0.0f);
     public float rotationSpeed = 5.0f;
     public Transform draw;
+
 
     void Awake()
     {
@@ -40,7 +42,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rigidbody2D.MovePosition(rigidbody2D.position + (inputVector * MovementSpeed * Time.fixedDeltaTime));
+        if(!minigamesController.IsOnMinigame)
+        {
+            rigidbody2D.MovePosition(rigidbody2D.position + (inputVector * MovementSpeed * Time.fixedDeltaTime));
+        }
     }
 
     void makeLladosDance() {

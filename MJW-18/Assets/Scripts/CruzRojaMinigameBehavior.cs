@@ -109,16 +109,16 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
         ScrollbarBalanceo.value += currentSpeed * MathF.Sign(nextTargetValue - ScrollbarBalanceo.value) + UnityEngine.Random.Range(-0.001f, 0.001f);
     }
 
-    float playerSpeed = 0.002f;
+    public float playerCursorSpeed = 0.002f;
     void PlayerInput()
     {
-        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.Mouse1))
+        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Mouse1))
         {
-            ScrollbarInputJugador.value += playerSpeed;    
+            ScrollbarInputJugador.value += playerCursorSpeed * Time.deltaTime;    
         }
-        else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Mouse0))
+        else if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Mouse0))
         {
-            ScrollbarInputJugador.value -= playerSpeed;    
+            ScrollbarInputJugador.value -= playerCursorSpeed * Time.deltaTime;        
         }
     }
 
