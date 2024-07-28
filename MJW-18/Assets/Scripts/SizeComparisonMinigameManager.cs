@@ -46,8 +46,8 @@ public class SizeComparisonMinigameManager : MonoBehaviour
         timePassed = 0.0f;
         blockInput = false;
 
-        //minigamesController = FindObjectOfType<MinigamesController>();
-        //DifficultyLevel = minigamesController.getLevel();
+        minigamesController = FindObjectOfType<MinigamesController>();
+        DifficultyLevel = minigamesController.getLevel();
 
 
         //shuffle positions

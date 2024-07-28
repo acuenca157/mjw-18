@@ -38,7 +38,7 @@ public class RoundTimeManager : MonoBehaviour
     }
 
     public IEnumerator startCountDown() {
-        while (actualTime > 0 || actualHP <  maxHPByDifficultyLevel[DifficultyLevel]) {
+        while (actualTime > 0 && actualHP <  maxHPByDifficultyLevel[DifficultyLevel]) {
             if (!minigamesController.IsOnMinigame)
             {
                 actualTime -= 1;

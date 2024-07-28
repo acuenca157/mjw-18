@@ -23,11 +23,14 @@ public class MinigamesController : MonoBehaviour
         IsOnMinigame = false;
     }
 
-    public int getLevel() {
+    public int getLevel()
+    {
         return actualLvl;
     }
 
-    public void activateMinigame(int id) {
+    public void activateMinigame(int id)
+    {
+        setMusic(id + 1);
         resetMinigames();
         makeTransition(minigames[id].texture);
         minigames[id].minigameObject.SetActive(true);
@@ -36,6 +39,7 @@ public class MinigamesController : MonoBehaviour
 
     public void deactivateMinigame(bool hasWin)
     {
+        setMusic(0);
         makeTransition();
         resetMinigames();
         if (hasWin)
@@ -43,36 +47,68 @@ public class MinigamesController : MonoBehaviour
             roundTimeManager.addTime(300);
             roundTimeManager.addHP(100);
         }
-        else {
+        else
+        {
             roundTimeManager.addTime(-100);
         }
 
         IsOnMinigame = false;
     }
 
-    private void resetMinigames() {
-        foreach (MinigameInfo minigame in minigames) { 
+    private void resetMinigames()
+    {
+        foreach (MinigameInfo minigame in minigames)
+        {
             minigame.minigameObject.SetActive(false);
         }
     }
 
-    private void makeTransition(RenderTexture render = null) {
+    private void makeTransition(RenderTexture render = null)
+    {
         curtainsController.makeCurtainTransition();
         tvController.toggleTV(render);
     }
 
-    public void endRound(bool hasWon) {
+    public void endRound(bool hasWon)
+    {
+        setMusic(4);
         makeTransition();
         if (hasWon)
         {
             Debug.Log("Ha gando la ronda");
             actualLvl++;
         }
-        else {
+        else
+        {
             Debug.Log("Ha perdido la ronda");
         }
     }
+    private void setMusic(int val)
+    {
+        switch (val)
+        {
+            case 0:
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("music-status", "main");
+                break;
+            case 1:
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("music-status", "cruz");
+                break;
+            case 2:
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("music-status", "mercadona");
+                break;
+            case 3:
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("music-status", "gym");
+                break;
+            case 4:
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("music-status", "pause");
+                break;
+            default:
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("music-status", "main");
+                break;
+        }
+    }
 }
+
 
 [Serializable]
 public class MinigameInfo {
