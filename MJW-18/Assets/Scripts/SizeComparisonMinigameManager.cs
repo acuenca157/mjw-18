@@ -46,9 +46,11 @@ public class SizeComparisonMinigameManager : MonoBehaviour
         blockInput = false;
 
         minigamesController = FindObjectOfType<MinigamesController>();
+        DifficultyLevel = minigamesController.getLevel();
+
 
         //shuffle positions
-         for (int t = 0; t < positions.Length; t++ )
+        for (int t = 0; t < positions.Length; t++ )
         {
             Vector3 tmp = positions[t];
             int r = Random.Range(t, positions.Length);

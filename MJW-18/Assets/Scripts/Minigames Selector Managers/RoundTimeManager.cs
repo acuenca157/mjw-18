@@ -43,13 +43,13 @@ public class RoundTimeManager : MonoBehaviour
             yield return new WaitForSeconds(removeSpeed / 100);
         }
 
-        if (actualHP >= maxHP)
-        {
-            Debug.Log("GANAS RONDA");
-        } else {
-            Debug.Log("PIERDES RONDA");
-        }
+        minigamesController.endRound(actualHP >= maxHP);
         yield return new WaitForEndOfFrame();
+    }
+
+    public void reset() {
+        removeSpeed = removeSpeed * minigamesController.actualLvl;
+        Start();
     }
 
     public void addTime(int amnt) {

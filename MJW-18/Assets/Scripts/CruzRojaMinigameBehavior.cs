@@ -28,10 +28,14 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
     public float timeLimitOutside = 0.8f;
     private int timesOutsideRange = 0;
 
+    [SerializeField]
+    private Sprite normal, shakingDer, shakingIzq, dieDer, dieIzq;
+
     // Start is called before the first frame update
     void Start()
     {
         minigamesController = FindObjectOfType<MinigamesController>();
+        DifficultyLevel = minigamesController.getLevel();
         sinoidalMovement = new Vector3();
 
         initialCameraPosition = CameraTransform.position;
@@ -128,6 +132,7 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
         if(timeOutsideRange > timeLimitOutside)
         {
             Reset();
+            updateGraphic("die-der");
             minigamesController.deactivateMinigame(false);
         }
 
@@ -143,13 +148,38 @@ public class CruzRojaMinigameBehavior : MonoBehaviour
         || ScrollbarInputJugador.value < ScrollbarBalanceo.value-deltaSize)
         {
             timeOutsideRange += Time.deltaTime;
+            updateGraphic("shaking-der");
             //Debug.Log("Outside Range!!!");
         }
         else
         {
             if(timeOutsideRange > 0.1f) timesOutsideRange++;
             timeOutsideRange = 0.0f;
+            updateGraphic("normal");
             //Debug.Log("Inside Range . . .");
+        }
+    }
+
+    private void updateGraphic(string status) {
+        SpriteRenderer sprite = OllaTransform.GetComponentInChildren<SpriteRenderer>();
+        switch (status)
+        {
+            case "normal":
+                sprite.sprite = normal;
+                break;
+            case "shaking-der":
+                sprite.sprite = shakingDer;
+                break;
+            case "shaking-izq":
+                sprite.sprite = shakingIzq;
+                break;
+            case "die-der":
+                sprite.sprite = dieDer;
+                break;
+            case "die-izq":
+                sprite.sprite = dieIzq;
+                break;
+
         }
     }
 

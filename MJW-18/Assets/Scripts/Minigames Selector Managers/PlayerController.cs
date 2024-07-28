@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        if (inputVector.x != 0 || inputVector.y != 0) {
+            makeLladosDance();
+        }
         UpdateRotation(inputVector.x);
     }
 
@@ -29,12 +32,10 @@ public class PlayerController : MonoBehaviour
         // DERECHA
         if (0 < x)
         {
-            makeLladosDance();
             draw.DOLocalRotate(new Vector3(0, 0, 0), 0.35f);
         }
         // IZQUIEDA
         if (0 > x) {
-            makeLladosDance();
             draw.DOLocalRotate(new Vector3(0, -180, 0), 0.35f);
         }
 

@@ -11,6 +11,8 @@ public class MinigamesController : MonoBehaviour
     private RoundTimeManager roundTimeManager;
 
     public bool IsOnMinigame = false;
+    [SerializeField]
+    public int actualLvl = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +23,12 @@ public class MinigamesController : MonoBehaviour
         IsOnMinigame = false;
     }
 
+    public int getLevel() {
+        return actualLvl;
+    }
+
     public void activateMinigame(int id) {
         resetMinigames();
-        Debug.Log(minigames[id].texture);
         makeTransition(minigames[id].texture);
         minigames[id].minigameObject.SetActive(true);
         IsOnMinigame = true;
@@ -54,6 +59,18 @@ public class MinigamesController : MonoBehaviour
     private void makeTransition(RenderTexture render = null) {
         curtainsController.makeCurtainTransition();
         tvController.toggleTV(render);
+    }
+
+    public void endRound(bool hasWon) {
+        makeTransition();
+        if (hasWon)
+        {
+            Debug.Log("Ha gando la ronda");
+            actualLvl++;
+        }
+        else {
+            Debug.Log("Ha perdido la ronda");
+        }
     }
 }
 

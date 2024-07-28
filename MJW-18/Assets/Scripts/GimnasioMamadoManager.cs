@@ -29,6 +29,7 @@ public class GimnasioMamadoManager : MonoBehaviour
     void Start()
     {
         minigamesController = FindObjectOfType<MinigamesController>();
+        DifficultyLevel = minigamesController.getLevel();
         burpeeStage = 0;
         lladosRenderer.sprite = sprites[burpeeStage];
         currentInputs = 0;
