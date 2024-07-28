@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,9 @@ public class MinigamesController : MonoBehaviour
     public bool IsOnMinigame = false;
     [SerializeField]
     public int actualLvl = 0;
+
+    [SerializeField]
+    private EventReference winSound, loseSound;
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +49,13 @@ public class MinigamesController : MonoBehaviour
         resetMinigames();
         if (hasWin)
         {
+            FMODUnity.RuntimeManager.PlayOneShot(winSound);
             roundTimeManager.addTime(300);
             roundTimeManager.addHP(100);
         }
         else
         {
+            FMODUnity.RuntimeManager.PlayOneShot(loseSound);
             roundTimeManager.addTime(-100);
         }
 

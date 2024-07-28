@@ -376,6 +376,20 @@ MonoBehaviour:
     minigameObject: {fileID: 1716883587}
   IsOnMinigame: 0
   actualLvl: 1
+  winSound:
+    Guid:
+      Data1: 1884520684
+      Data2: 1169920354
+      Data3: 2128294329
+      Data4: 1937995879
+    Path: event:/ganarMinigame
+  loseSound:
+    Guid:
+      Data1: 922673067
+      Data2: 1330009264
+      Data3: -1215215682
+      Data4: -494178881
+    Path: event:/perderMinigame
 --- !u!1 &109716619
 GameObject:
   m_ObjectHideFlags: 0
