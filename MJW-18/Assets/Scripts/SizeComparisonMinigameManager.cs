@@ -8,6 +8,7 @@ public class SizeComparisonMinigameManager : MonoBehaviour
     public int DifficultyLevel = 0;
     public int[] NumberOfObjectsByDifficulty;
     public GameObject[] ListOfObjectsToSpawn;
+    public Sprite[] ListOfSpritesToSpawn;
     public float[] ListOfObjectsSizes;
     public Transform CursorHand;
     public float CursorSpeed;
@@ -34,12 +35,12 @@ public class SizeComparisonMinigameManager : MonoBehaviour
         if(positions == null)
         {
             positions = new Vector3[6];
-            positions[0] = new Vector3(  00.0f,-1.0f, 1.0f);
-            positions[1] = new Vector3(  00.0f, 1.0f, 1.0f);
-            positions[2] = new Vector3( -2.0f, -1.0f,1.0f);
-            positions[3] = new Vector3(  2.0f, -1.0f,1.0f);
-            positions[4] = new Vector3( -2.0f,  1.0f,1.0f);
-            positions[5] = new Vector3(  2.0f,  1.0f,1.0f);
+            positions[0] = new Vector3(  00.0f,- 2.225f, 1.0f);
+            positions[1] = new Vector3(  00.0f,  2.225f, 1.0f);
+            positions[2] = new Vector3( -3.0f, -2.225f,1.0f);
+            positions[3] = new Vector3(  3.0f, -2.225f,1.0f);
+            positions[4] = new Vector3( -3.0f,  2.225f,1.0f);
+            positions[5] = new Vector3(  3.0f,  2.225f,1.0f);
         }
 
         timePassed = 0.0f;
@@ -67,9 +68,11 @@ public class SizeComparisonMinigameManager : MonoBehaviour
             {
                 ObjectsSpawned[i] = (GameObject)Instantiate(ListOfObjectsToSpawn[i], positions[i], Quaternion.identity);
                 ObjectsSpawned[i].transform.SetParent(MainCamera.transform);
+                ObjectsSpawned[i].GetComponent<SpriteRenderer>().sprite = ListOfSpritesToSpawn[i];
                 
                 //DEBUG Sprites should have their won corrct size without setting scale
-                ObjectsSpawned[i].transform.localScale = new Vector3(1.0f, ListOfObjectsSizes[i], 1.0f);
+                //ObjectsSpawned[i].transform.localScale = new Vector3(1.0f, ListOfObjectsSizes[i], 1.0f);
+                //ObjectsSpawned[i].transform.localScale = new Vector3(1, ListOfObjectsSizes[i], 1.0f);
             }
         }
 
