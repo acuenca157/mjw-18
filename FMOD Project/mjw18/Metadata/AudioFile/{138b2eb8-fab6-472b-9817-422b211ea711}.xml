@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{138b2eb8-fab6-472b-9817-422b211ea711}">
+		<property name="assetPath">
+			<value>sfx/SFX_Telón.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.28799999999999998</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2b1ed6bb-15e2-4554-bd15-5e271bdc37f4}</destination>
+		</relationship>
+	</object>
+</objects>

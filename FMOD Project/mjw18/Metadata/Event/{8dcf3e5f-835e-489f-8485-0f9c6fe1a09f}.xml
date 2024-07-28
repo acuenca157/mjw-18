@@ -5,7 +5,7 @@
 			<value>telon</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c3002c8c-a24c-4d77-996a-238af53cdd9d}</destination>
@@ -38,6 +38,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{456d4f5c-7cab-4f61-ab8c-8eb927826491}">
+		<relationship name="modules">
+			<destination>{a56c7495-083b-4cac-9b7c-23e6d593d02b}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{4f22512c-5ca9-46dc-bacf-5900f1d7eb8f}</destination>
 		</relationship>
@@ -56,9 +59,9 @@
 	<object class="EventAutomatableProperties" id="{82ff3fc3-9515-45b4-ba8e-6e826e58524a}" />
 	<object class="MarkerTrack" id="{9c37ae0e-d8fc-4650-9049-07db382919f2}" />
 	<object class="Timeline" id="{7a18f04b-0fa6-4cdc-87f8-41d1cf9a6946}">
-		<property name="isProxyEnabled">
-			<value>false</value>
-		</property>
+		<relationship name="modules">
+			<destination>{a56c7495-083b-4cac-9b7c-23e6d593d02b}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{4f22512c-5ca9-46dc-bacf-5900f1d7eb8f}">
 		<relationship name="effectChain">
@@ -69,6 +72,14 @@
 		</relationship>
 		<relationship name="mixer">
 			<destination>{8c38d50a-d90b-4ecb-8502-be2baac0e136}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{a56c7495-083b-4cac-9b7c-23e6d593d02b}">
+		<property name="length">
+			<value>0.28799999999999998</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{138b2eb8-fab6-472b-9817-422b211ea711}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{a950de59-b155-4385-8de5-c0447f38f0dc}">

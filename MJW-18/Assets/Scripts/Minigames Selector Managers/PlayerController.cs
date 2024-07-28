@@ -1,4 +1,5 @@
 using DG.Tweening;
+using FMODUnity;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 inputVector = new Vector2(0.0f, 0.0f);
     public float rotationSpeed = 5.0f;
     public Transform draw;
+    [SerializeField]
+    private GameObject pasos;
 
 
     void Awake()
@@ -21,20 +24,30 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        if (inputVector.x != 0 || inputVector.y != 0) {
-            makeLladosDance();
+        if (!minigamesController.IsOnMinigame)
+        {
+            inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            if (inputVector.x != 0 || inputVector.y != 0)
+            {
+                makeLladosDance();
+                pasos.SetActive(true);
+            }
+            else
+            {
+                pasos.SetActive(false);
+            }
+            UpdateRotation(inputVector.x);
         }
-        UpdateRotation(inputVector.x);
+        else {
+            pasos.SetActive(false);
+        }
     }
 
     void UpdateRotation(float x) {
-        // DERECHA
         if (0 < x)
         {
             draw.DOLocalRotate(new Vector3(0, 0, 0), 0.35f);
         }
-        // IZQUIEDA
         if (0 > x) {
             draw.DOLocalRotate(new Vector3(0, -180, 0), 0.35f);
         }

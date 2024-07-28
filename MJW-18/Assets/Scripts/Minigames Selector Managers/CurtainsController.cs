@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class CurtainsController : MonoBehaviour
     private float speed = 10.0f;
 
     private bool isOpened;
+
+    [SerializeField]
+    private EventReference sonidoTelon;
 
 
     private void Start()
@@ -36,6 +40,7 @@ public class CurtainsController : MonoBehaviour
 
     public void makeCurtainTransition()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(sonidoTelon);
         if (isOpened)
         {
             curtainLeftActualPosition = curtainLeftClosedPosition;
