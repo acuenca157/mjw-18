@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{f943d722-4f76-4ea3-a28f-0c79c9d20b67}">
+		<property name="assetPath">
+			<value>PANZA/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2b1ed6bb-15e2-4554-bd15-5e271bdc37f4}</destination>
+		</relationship>
+	</object>
+</objects>
