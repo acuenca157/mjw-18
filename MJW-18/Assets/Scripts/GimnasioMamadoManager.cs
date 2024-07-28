@@ -37,7 +37,7 @@ public class GimnasioMamadoManager : MonoBehaviour
         burpeeInstructions.text = "Alterna A y D !!!";
         previousRotationTarget = mainCamera.rotation.eulerAngles;
 
-        mainCamera.position = cameraPositions[0];
+        mainCamera.localPosition = cameraPositions[0];
         mainCamera.rotation = Quaternion.Euler(cameraRotation[0]);
     }
 

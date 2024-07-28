@@ -350,9 +350,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1888189499}
   - {fileID: 1966714567292204569}
   - {fileID: 863268823}
+  - {fileID: 1455016312}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &97076443
@@ -372,8 +372,10 @@ MonoBehaviour:
     minigameObject: {fileID: 7410563960701173160}
   - texture: {fileID: 8400000, guid: b0db1f0442b068947ae10558b70fbc1d, type: 2}
     minigameObject: {fileID: 863268822}
+  - texture: {fileID: 8400000, guid: 50fd3a6850ba51449a2af82839acfc28, type: 2}
+    minigameObject: {fileID: 1455016308}
   IsOnMinigame: 0
-  actualLvl: 2
+  actualLvl: 0
 --- !u!1 &109716619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,6 +2797,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447881838}
   m_CullTransparentMesh: 1
+--- !u!1 &1455016308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2527746209339679864, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+  m_PrefabInstance: {fileID: 1888189498}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1455016312 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 54011389669149262, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+  m_PrefabInstance: {fileID: 1888189498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1561387432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3817,6 +3829,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 97076442}
     m_Modifications:
+    - target: {fileID: 54011389669149262, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 97
+      objectReference: {fileID: 0}
+    - target: {fileID: 54011389669149262, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 266
+      objectReference: {fileID: 0}
     - target: {fileID: 178843074105107420, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
       propertyPath: m_Name
       value: MinijuegoGymbro
@@ -3824,6 +3844,30 @@ PrefabInstance:
     - target: {fileID: 178843074105107420, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431526598344061133, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431526598344061133, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 50fd3a6850ba51449a2af82839acfc28, type: 2}
+    - target: {fileID: 2431526598344061133, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431526598344061133, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.0153307915
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431526598344061133, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431526598344061133, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2436684955121929706, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
       propertyPath: m_Pivot.x
@@ -3905,16 +3949,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2527746209339679864, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
---- !u!224 &1888189499 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2436684955121929706, guid: 36ac263378ab25143ba4a1750608bd2e, type: 3}
-  m_PrefabInstance: {fileID: 1888189498}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1967041935
 GameObject:
   m_ObjectHideFlags: 0
