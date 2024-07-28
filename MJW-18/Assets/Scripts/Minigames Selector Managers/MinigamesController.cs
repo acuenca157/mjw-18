@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MinigamesController : MonoBehaviour
 {
@@ -76,11 +77,24 @@ public class MinigamesController : MonoBehaviour
         if (hasWon)
         {
             Debug.Log("Ha gando la ronda");
+            if(actualLvl == 0)
+            {
+                SceneManager.LoadScene("GoodEnding");
+            }
+            else if(actualLvl == 1)
+            {
+                SceneManager.LoadScene("GoodEnding2");
+            }
+            else if(actualLvl == 2)
+            {
+                SceneManager.LoadScene("GoodEndingFinal");
+            }
             actualLvl++;
         }
         else
         {
             Debug.Log("Ha perdido la ronda");
+            SceneManager.LoadScene("BadEnding");
         }
     }
     private void setMusic(int val)

@@ -9,6 +9,7 @@ public class GimnasioMamadoManager : MonoBehaviour
     public Transform mainCamera;
     public TextMeshProUGUI burpeeInstructions;
     public Sprite[] sprites;
+    public GameObject manos;
     public Vector3[] cameraPositions;
     public Vector3[] cameraRotation;
     public SpriteRenderer lladosRenderer;
@@ -39,6 +40,7 @@ public class GimnasioMamadoManager : MonoBehaviour
 
         mainCamera.localPosition = cameraPositions[0];
         mainCamera.rotation = Quaternion.Euler(cameraRotation[0]);
+        manos.SetActive(false);
     }
 
     void Reset()
@@ -114,6 +116,15 @@ public class GimnasioMamadoManager : MonoBehaviour
         lladosRenderer.sprite = sprites[modulatedCurrentInputs % 3];
         cameraPositionTarget = cameraPositions[modulatedCurrentInputs % 3];
         cameraRotationTarget = cameraRotation[modulatedCurrentInputs % 3];
+
+        if(modulatedCurrentInputs % 3 == 1)
+        {
+            manos.SetActive(true);
+        }
+        else
+        {
+            manos.SetActive(false);
+        }
 
         //previousRotationTarget = cameraRotation[Mathf.Clamp((currentInputs/3 % 3) - 1, 0, 3)];
 

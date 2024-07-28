@@ -375,7 +375,7 @@ MonoBehaviour:
   - texture: {fileID: 8400000, guid: 50fd3a6850ba51449a2af82839acfc28, type: 2}
     minigameObject: {fileID: 1716883587}
   IsOnMinigame: 0
-  actualLvl: 0
+  actualLvl: 1
 --- !u!1 &109716619
 GameObject:
   m_ObjectHideFlags: 0
