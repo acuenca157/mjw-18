@@ -14,13 +14,16 @@ public class RoundTimeManager : MonoBehaviour
     private MinigamesController minigamesController;
 
     // HIJO PUTISMO SYSTEM
-    public int maxHP = 1000;
+    // public int maxHP = 1000;
+    public int[] maxHPByDifficultyLevel;
     private int actualHP = 0;
+    private int DifficultyLevel;
 
     // Start is called before the first frame update
     void Start()
     {
         minigamesController = FindObjectOfType<MinigamesController>();
+        DifficultyLevel = minigamesController.getLevel();
         slider.fillAmount = 1;
         hpSlider.fillAmount = 0;
         actualTime = totalTime;
@@ -31,11 +34,11 @@ public class RoundTimeManager : MonoBehaviour
     private void Update()
     {
         slider.fillAmount = (float) actualTime / totalTime;
-        hpSlider.fillAmount = (float) actualHP / maxHP;
+        hpSlider.fillAmount = (float) actualHP / maxHPByDifficultyLevel[DifficultyLevel];
     }
 
     public IEnumerator startCountDown() {
-        while (actualTime > 0 || actualHP < maxHP) {
+        while (actualTime > 0 || actualHP <  maxHPByDifficultyLevel[DifficultyLevel]) {
             if (!minigamesController.IsOnMinigame)
             {
                 actualTime -= 1;
@@ -43,7 +46,7 @@ public class RoundTimeManager : MonoBehaviour
             yield return new WaitForSeconds(removeSpeed / 100);
         }
 
-        minigamesController.endRound(actualHP >= maxHP);
+        minigamesController.endRound(actualHP >=  maxHPByDifficultyLevel[DifficultyLevel]);
         yield return new WaitForEndOfFrame();
     }
 
