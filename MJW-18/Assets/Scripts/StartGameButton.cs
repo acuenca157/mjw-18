@@ -26,7 +26,7 @@ public class StartGameButton : MonoBehaviour
 
     void StartGameOnClick()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("CinematicIntro");
     }
 
     void ExitGameOnClick()

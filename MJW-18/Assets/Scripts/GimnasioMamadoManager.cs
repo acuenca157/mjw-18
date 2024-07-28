@@ -35,12 +35,13 @@ public class GimnasioMamadoManager : MonoBehaviour
         lladosRenderer.sprite = sprites[burpeeStage];
         currentInputs = 0;
         elapsedTime = 0.0f;
-        burpeeInstructions.text = "Alterna A y D !!!";
+        burpeeInstructions.text = "Alterna \n  A y D !!";
         previousRotationTarget = mainCamera.rotation.eulerAngles;
 
         mainCamera.localPosition = cameraPositions[0];
         mainCamera.rotation = Quaternion.Euler(cameraRotation[0]);
         manos.SetActive(false);
+        lladosRenderer.gameObject.SetActive(true);
     }
 
     void Reset()
@@ -120,16 +121,18 @@ public class GimnasioMamadoManager : MonoBehaviour
         if(modulatedCurrentInputs % 3 == 1)
         {
             manos.SetActive(true);
+            lladosRenderer.gameObject.SetActive(false);
         }
         else
         {
             manos.SetActive(false);
+            lladosRenderer.gameObject.SetActive(true);
         }
 
         //previousRotationTarget = cameraRotation[Mathf.Clamp((currentInputs/3 % 3) - 1, 0, 3)];
 
         timeCountTransition += Time.deltaTime;
-        mainCamera.localPosition = Vector3.Lerp(mainCamera.localPosition, cameraPositionTarget, Time.deltaTime * 5.0f);
+        mainCamera.localPosition = Vector3.Lerp(mainCamera.localPosition, cameraPositionTarget, Time.deltaTime * 12.0f);
         mainCamera.rotation = Quaternion.RotateTowards(mainCamera.rotation, Quaternion.Euler(cameraRotationTarget), Time.deltaTime * rotatingSpeed);//Quaternion.Slerp(mainCamera.rotation, Quaternion.Euler(cameraRotationTarget), Time.deltaTime * 5.0f);
     }
 
@@ -143,7 +146,7 @@ public class GimnasioMamadoManager : MonoBehaviour
         if(burpeeStage == 1 && currentInputs > (InputsForWinByDifficulty[DifficultyLevel] / 3) * 2)
         {
             burpeeStage = 2;
-            burpeeInstructions.text = "WASD . . . Gira que te gira !!!";
+            burpeeInstructions.text = "WASD \n Gira que te gira !!!";
         }
         
         if(currentInputs >= InputsForWinByDifficulty[DifficultyLevel])
