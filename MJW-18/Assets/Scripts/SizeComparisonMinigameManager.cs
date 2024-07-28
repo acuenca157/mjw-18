@@ -7,9 +7,9 @@ public class SizeComparisonMinigameManager : MonoBehaviour
     public MinigamesController minigamesController;
     public int DifficultyLevel = 0;
     public int[] NumberOfObjectsByDifficulty;
-    public GameObject[] ListOfObjectsToSpawn;
+    public GameObject ObjectToSpawn;
     public Sprite[] ListOfSpritesToSpawn;
-    public float[] ListOfObjectsSizes;
+    public Sprite[] ListOfHandSprites;
     public Transform CursorHand;
     public float CursorSpeed;
 
@@ -46,8 +46,8 @@ public class SizeComparisonMinigameManager : MonoBehaviour
         timePassed = 0.0f;
         blockInput = false;
 
-        minigamesController = FindObjectOfType<MinigamesController>();
-        DifficultyLevel = minigamesController.getLevel();
+        //minigamesController = FindObjectOfType<MinigamesController>();
+        //DifficultyLevel = minigamesController.getLevel();
 
 
         //shuffle positions
@@ -66,7 +66,7 @@ public class SizeComparisonMinigameManager : MonoBehaviour
             ObjectsSpawned = new GameObject[6];
             for(int i = 0; i < 6; ++i)
             {
-                ObjectsSpawned[i] = (GameObject)Instantiate(ListOfObjectsToSpawn[i], positions[i], Quaternion.identity);
+                ObjectsSpawned[i] = (GameObject)Instantiate(ObjectToSpawn, positions[i], Quaternion.identity);
                 ObjectsSpawned[i].transform.SetParent(MainCamera.transform);
                 ObjectsSpawned[i].GetComponent<SpriteRenderer>().sprite = ListOfSpritesToSpawn[i];
                 
@@ -90,8 +90,10 @@ public class SizeComparisonMinigameManager : MonoBehaviour
         }
 
         //correctScale
-        CursorHand.localScale = new Vector3(1.0f, ListOfObjectsSizes[correctObject], 1.0f);
+        //CursorHand.localScale = new Vector3(1.0f, ListOfObjectsSizes[correctObject], 1.0f);
+        CursorHand.GetComponent<SpriteRenderer>().sprite = ListOfHandSprites[correctObject];
         correctPosition = ObjectsSpawned[correctObject].transform.position;
+        CursorHand.localScale = new Vector3(0.225f,0.225f,0.225f);
     }
 
     void Reset(){
